@@ -1,4 +1,4 @@
-"""ChelmusBoking URL Configuration
+"""ChelmusBooking URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.11/topics/http/urls/
@@ -16,6 +16,12 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
+from . import views
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^$', views.HomePageView.as_view(), name='home'),
+    url(r'accounts/register/$', views.SignUpView.as_view(), name='register'),
+    url(r'accounts/login/$', views.LoginView.as_view(), name='login'),
+    url(r'accounts/logout/$', views.LogOutView.as_view(), name='logout'),
 ]

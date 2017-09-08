@@ -1,0 +1,20 @@
+{% extends '_layouts/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Login | {{ block.super }}{% endblock %}
+
+
+
+{% block info %}
+<p>Autentificati-vă! Oferte exclusive şi rezervări mai rapide! </p>
+<p>
+<b>Chelmus Booking</b> garantează cele mai bune preţuri pentru rezervarea oricărui tip de proprietate, variind
+ de la mici pensiuni de familie, până la apartamente exclusiviste şi suite luxoase de 5 stele. In plus, oferă  
+ un numar impresionant de proprietăți active în intreaga lume.
+ </p>
+{% endblock info %}
+
+{% block content %}
+{% crispy form %}
+{% endblock %}

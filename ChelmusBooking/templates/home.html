@@ -1,0 +1,55 @@
+{% extends '_layouts/base.html' %}
+
+{% load static %}
+{% load staticfiles %}
+
+{% block headline %}<h1>Bun venit - Chelmus Booking!</h1>{% endblock headline %}
+
+{% block mainmenu %}
+
+{% endblock mainmenu %}
+
+{% block info %}
+    {% if user.is_authenticated %}
+		<img src="{% static 'images/banner.jpg' %}" alt="My image"><a href="#">
+		<p>contact</p><img src="{% static 'images/mail.jpg' %}" alt="Contactipx" /></a>
+		<br>
+        <p>
+            Bun venit, {{ user.username }}!
+        </p>
+
+        <p>
+		Cu <a href="{% url 'home' %}"><b> Chelmus Booking</b></a> puteți găsi cu ușurință hotelul ideal la cel mai mic preţ. Trebuie doar să introduceți 
+		locația unde doriți să mergeți și datele călătoriei dvs., apoi motorul nostru de căutare compară prețurile 
+		de cazare pentru dvs. Pentru a rafina rezultatele căutării, trebuie doar să folosiți filtre pentru preț,
+		distanță (de exemplu, de la plajă), categoria de stele, facilități și multe alte filtre. De la hosteluri
+		ieftine până la apartamente de lux, <a href="{% url 'home' %}"><b> Chelmus Booking</b></a> face mai ușoară rezervarea
+			online. Puteți căuta dintr-o mare
+		varietate de camere și locații din România, cum ar fi București , și Mamaia , sau alte orașe populare și 
+		destinații de vacanță în străinătate! <a href='#'>Vezi ofertele!</a>
+		</p>
+		
+		<p>
+		Ai de oferit o locatie? <a href='#'>Înregistrați-vă proprietatea si publicati anuntul direct pe <b>Chelmus Booking</a></b>
+		</p>
+    {% else %}
+        <p>
+            Bun venit!
+		</p>
+        <p>
+            Pentru o mai buna utilizare a site-ului, te rugam sa te autentifici! Esti un utilizator nou?
+			Urmeaza link-ul de inregistrare!
+            <ol>
+				<a href="{% url 'login' %}" class="btn btn-success navbar-btn">Autentificare</a>
+				<a href="{% url 'register' %}" class="btn btn-warning navbar-btn">Inregistrare cont nou</a>
+            </ol>
+        </p>
+
+    {% endif %}
+
+
+{% endblock info %}
+
+{% block content %}
+
+{% endblock content %}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+{% load static %}
+{% load staticfiles %}
+<html>
+<head>
+    <title>{% block title %}Chelmus Booking{% endblock title %}</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-bottom: 20px;
+            padding-top: 70px;
+            margin:0;
+        }
+        .messages {
+            list-style: none;
+        }
+        div.scrollmenu {
+            background-color: #333;
+            overflow: auto;
+            white-space: nowrap;
+        }
+
+        div.scrollmenu a {
+            display: inline-block;
+            color: white;
+            text-align: center;
+            padding: 14px;
+            text-decoration: none;
+        }
+
+        div.scrollmenu a:hover {
+            background-color: #777;
+        }
+    </style>
+    {% block css %}{% endblock css %}
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{% url 'home' %}">Chelmus Booking</a>
+        </div>
+        <div class="navbar-collapse collapse">
+        {% block mainmenu %}
+        {% endblock mainmenu %}
+		{% if not user.is_authenticated %}
+			<a href="{% url 'login' %}" class="btn btn-success navbar-btn">Autentificare</a>
+			<a href="{% url 'register' %}" class="btn btn-warning navbar-btn">Inregistrare cont nou</a>
+		{% else %}
+			<a href="{% url 'logout' %}" class="btn btn-danger navbar-btn">Deconectare</a>
+		{% endif %}
+        </div><!--/.navbar-collapse -->
+      </div>
+    </div>
+
+
+    <div class="scrollmenu">
+    </div>
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li {% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>{{ message }} </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <br><br><br>
+    <div class="container">
+
+         <div class="jumbotron">
+            {% block info %}
+            {% endblock info %}
+         </div>
+
+        {% block content %}
+        {% endblock content %}
+    </div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    {% block js %}{% endblock js %}
+</body>
+</html>
