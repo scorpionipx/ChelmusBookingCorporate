@@ -4,7 +4,9 @@
 <html>
 <head>
     <title>{% block title %}Chelmus Booking{% endblock title %}</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	
+	<link href="{% static "css/tooplate_style.css" %}" rel="stylesheet" type="text/css" />
+	
     <style>
         body {
             padding-bottom: 20px;
@@ -35,52 +37,60 @@
     {% block css %}{% endblock css %}
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="{% url 'home' %}">Chelmus Booking</a>
-        </div>
-        <div class="navbar-collapse collapse">
-        {% block mainmenu %}
-        {% endblock mainmenu %}
-		{% if not user.is_authenticated %}
-			<a href="{% url 'login' %}" class="btn btn-success navbar-btn">Autentificare</a>
-			<a href="{% url 'register' %}" class="btn btn-warning navbar-btn">Inregistrare cont nou</a>
-		{% else %}
-			<a href="{% url 'logout' %}" class="btn btn-danger navbar-btn">Deconectare</a>
-		{% endif %}
-        </div><!--/.navbar-collapse -->
-      </div>
-    </div>
 
+	<div id="tooplate_body_wrapper">
+		<div id="tooplate_wrapper">
+			
+			<div id="tooplate_top">
+				
+				<div class="cleaner"></div>
+			</div> <!-- end of tooplate_top -->    
+			
+			<div id="tooplate_header">
+				<div id="site_title">
+					<h1><a href="#">Corporate Template</a></h1>
+				</div>
+				<div id="header_right">
+					<div id="social_links">
+						<a href="#"><img src="{% static 'images/mail.png' %}" alt="Contact" /></a>
+						<a href="#"><img src="{% static 'images/rss.png' %}" alt="RSS" /></a>
+						<a href="#"><img src="{% static 'images/twitter_01.png' %}" alt="Twitter" /></a>            
+					</div>
+					<div id="tooplate_menu">
+						<ul>
+							{% if not user.is_authenticated %}
+								<li><a href="{% url 'login' %}">Autentificare</a></li>
+								<li><a href="{% url 'register' %}">Inregistrare</a></li>
+							{% else %}
+								<li><a href="index.html" class="current">Home</a></li>
+								<li><a href="about.html">About</a></li>
+								<li><a href="gallery.html">Gallery</a></li>
+								<li><a href="contact.html">Contact</a></li>
+								<li><a href="{% url 'logout' %}">Deconectare</a></li>
+							{% endif %}
+						</ul>    	
+					</div> <!-- end of tooplate_menu -->
+				</div>
+				<div class="cleaner"></div>
+			</div> <!-- end of tooplate_header -->
+		
+				{% block info %}
+				{% endblock info %}
+			
+			<div id="tooplate_main">
+				{% block content %}
+				
+		
+		{% endblock content %}			   
+		</div> <!-- end of tooplate_wrapper -->
+		
+		<div id="tooplate_footer_wrapper">
+			<div id="tooplate_footer">
+				
+			Copyright © 2017 <a href="{% url 'home' %}">Chelmus Booking</a> 
+			
+			</div> <!-- end of tooplate_footer -->
+		</div> <!-- end of tooplate_footer_wrapper -->
+	</div> <!-- end of tooplate_body_wrapper -->
 
-    <div class="scrollmenu">
-    </div>
-    {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-                <li {% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>{{ message }} </li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-    <br><br><br>
-    <div class="container">
-
-         <div class="jumbotron">
-            {% block info %}
-            {% endblock info %}
-         </div>
-
-        {% block content %}
-        {% endblock content %}
-    </div>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    {% block js %}{% endblock js %}
-</body>
 </html>

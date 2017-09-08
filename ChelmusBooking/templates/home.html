@@ -9,12 +9,10 @@
 
 {% endblock mainmenu %}
 
+
 {% block info %}
-    {% if user.is_authenticated %}
-		<img src="{% static 'images/banner.jpg' %}" alt="My image"><a href="#">
-		<p>contact</p><img src="{% static 'images/mail.jpg' %}" alt="Contactipx" /></a>
-		<br>
-        <p>
+	{% if user.is_authenticated %}
+		<p>
             Bun venit, {{ user.username }}!
         </p>
 
@@ -25,15 +23,15 @@
 		distanță (de exemplu, de la plajă), categoria de stele, facilități și multe alte filtre. De la hosteluri
 		ieftine până la apartamente de lux, <a href="{% url 'home' %}"><b> Chelmus Booking</b></a> face mai ușoară rezervarea
 			online. Puteți căuta dintr-o mare
-		varietate de camere și locații din România, cum ar fi București , și Mamaia , sau alte orașe populare și 
+		varietate de camere și locații din România, cum ar fi București, Mamaia, sau alte orașe populare și 
 		destinații de vacanță în străinătate! <a href='#'>Vezi ofertele!</a>
 		</p>
 		
 		<p>
 		Ai de oferit o locatie? <a href='#'>Înregistrați-vă proprietatea si publicati anuntul direct pe <b>Chelmus Booking</a></b>
 		</p>
-    {% else %}
-        <p>
+	{% else %}
+		<p>
             Bun venit!
 		</p>
         <p>
@@ -44,12 +42,138 @@
 				<a href="{% url 'register' %}" class="btn btn-warning navbar-btn">Inregistrare cont nou</a>
             </ol>
         </p>
-
-    {% endif %}
-
-
+	{% endif %}	
 {% endblock info %}
 
-{% block content %}
 
+{% block content %}
+	{% if user.is_authenticated %}
+		<div class="cleaner h20"></div>
+					
+					<div class="tooplate_sidebar float_l">
+						<div class="content_box">
+							<h3>Our Services</h3>
+							<ul class="tmo_list">
+								<li><a href="#">Lorem ipsum dolor sit amet</a></li>
+								<li><a href="#">Consectetur adipisicing elitUt enim</a></li>
+								<li><a href="#">Minim veniamquis exercit</a></li>
+								<li><a href="#">Commodo consequat</a></li>
+								<li><a href="#">Fuis aute irure dolorin repreh</a></li>
+								<li><a href="#">Excepteur sint occaecat cupida</a></li>
+								<li><a href="#">Officia deserunt mollit anim</a></li>
+							</ul>
+						</div>
+						<div class="content_box">                
+							<h3>Latest Projects</h3>
+							<ul class="tmo_list">
+								<li><a href="#">Nullam varius, turpis et commodo</a></li>
+								<li><a href="#">Fluctus magna felis sollici</a></li>
+								<li><a href="#">Integer in mauris eu nibh</a></li>
+								<li><a href="#">Duis ac tellus et risus vulputate</a></li>
+							</ul>
+						</div>
+						<div class="content_box lb">                
+							<h3>Our Location</h3>
+							200-400 Fuis aute irure, Nullam<br />
+							Lorem Ipsum 10550<br />
+							Tel: 010-020-0120<br />
+							Email: <a href="#">info@company.com</a></div>                
+						</div>
+					
+					<div id="tooplate_content">
+						
+						<div class="content_box hr_divider">
+							<h2>Corporate Site</h2>
+							<p>Corporate is free HTML template that is fully compatible with Dreamweaver design view. So that you can easily edit this layout for your website. Please tell your friends about <a rel="nofollow" href="http://www.tooplate.com" target="_parent">Tooplate</a>.</p>
+							<p>Donec lobortis risus a elit. Etiam tempor. Ut ullamcorper, ligula eu tempor congue, eros est euismod tuid tincidunt.</p>
+							<a href="#" class="more float_r">Read More</a>
+						  <div class="cleaner"></div>
+						</div>
+						<div class="content_box hr_divider">
+							<h3>New Project</h3>
+							<img src="{% static 'images/icon.png' %}" alt="Image" class="image_fl" />
+							<p>Lorem ipsum dolor sit amet, consectetur al adipisicing elit, sed do eiusmod temp ornati cididunt ut labore et dolore magna aliqua fominim veniamquis.</p>
+							<a href="#" class="more float_r">Read More</a>
+							<div class="cleaner"></div>
+						</div>
+						<div class="content_box lb">
+							<h3>Our Company</h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim venia quis Duis aute irure dolor.</p>
+							<a href="#" class="more float_r">Read More</a>
+							<div class="cleaner"></div>
+						</div>
+						<div class="cleaner"></div>
+					</div>
+					
+					<div class="tooplate_sidebar float_r">
+						<div class="content_box lb">
+							<h3 class="gallery_title">Our Gallery</h3>
+							<div class="box01"><span class="top"></span><span class="bottom"></span>
+								<div class="box01_content">
+									<div class="image_wrapper"><span></span><img alt="Image" src="{% static 'images/tooplate_image_01.jpg' %}" /></div>
+									Duis ac tellus et risus vulputate am lobortis risus a elit.
+								</div>
+								<div class="box01_content">
+									<div class="image_wrapper"><span></span><img alt="Image" src="{% static 'images/tooplate_image_02.jpg' %}" /></div>
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+								</div>
+								<div class="box01_content lb">
+									<div class="image_wrapper"><span></span><img alt="Image" src="{% static 'images/tooplate_image_03.jpg' %}" /></div>
+									Ut enim ad minim venia quis Duis aute irure dolor in reprehenderit.
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="cleaner h20"></div>
+					
+					<div class="col_half">
+						<h2>Our Expertise</h2>
+						<img class="image_gallery" src="{% static 'images/tooplate_image_31.jpg' %}" alt="Image 31" />
+						<p>Cras ut urna maximus, ullamcorper metus vitae, tincidunt turpis. Donec lobortis orci ante, eget posuere velit scelerisque at. In pellentesque sem luctus tincidunt varius.</p>
+						<div class="cleaner"></div>
+					</div>
+					
+					<div class="col_half rmb">
+						<h2>Our Process</h2>
+						<img class="image_gallery" src="{% static 'images/tooplate_image_32.jpg' %}" alt="Image 32" />
+						<p>Pellentesque quis lectus sed tellus pellentesque egestas et non neque. Nullam luctus, eros sed pellentesque dictum, sem ex aliquet libero, nec viverra est ligula ornare eros. Quisque in nibh in dui.</p>
+						<div class="cleaner"></div>
+					</div>
+
+					<div class="cleaner"></div>
+					
+				</div>
+				
+				<div id="tooplate_main_bottom"></div>
+				
+				<div id="tooplate_bottom">
+					<div class="col_w280">
+						<h4 class="twitter">Twitter</h4>
+						<p>Duis aute irure dolor in reprehes nerit in voluptate velit esse cillum dolo rsee.</p>
+						<p>In risus sapien, pretium et hendrerit quis, facilisis nec massa. Quisque eros sem, consequat.</p>
+						<p>Nullam luctus, eros sed pellentesque dictum, sem ex aliquet libero, nec viverra est ligula.</p>
+						<a href="#" class="float_r follow_us">Follow</a>
+					</div>
+					<div class="col_w280">
+						<h4>Recent Work</h4>
+						<img class="imger_box" src="{% static 'images/tooplate_image_10.jpg' %}" alt="Image 10" />
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+					</div>
+					<div class="col_w280 rmb">
+						<h4>Company Address</h4>
+						<strong>Corporate Co. Ltd.</strong><br />
+						110-220 Consectetur adipisicing, <br />
+						Tempor incididunt 10550<br />
+						Tel: 010-020-0330<br /><br />
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elise tempor incididunt ut labore et dolore magna aliqua. Utnis ad minim veniaquis.</p>
+					</div>
+					<div class="cleaner"></div>
+				</div>
+	{% else %}
+	{% endif %}
 {% endblock content %}
+
+
+
+

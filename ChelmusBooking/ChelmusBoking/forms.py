@@ -34,6 +34,6 @@ class LoginForm(AuthenticationForm):
             'username',
             'password',
             ButtonHolder(
-                Submit('login', 'Login', css_class='btn-primary')
+                Submit('login', 'Autentificare', css_class='btn-primary')
             )
         )
